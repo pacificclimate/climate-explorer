@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from logging import basicConfig, DEBUG
 from argparse import ArgumentParser
 
