@@ -6,7 +6,7 @@ To set up the Flask server use Virtualenv:
 
 ```bash
 virtualenv venv
-venv/bin/pip install -r requirements.txt
+venv/bin/python setup.py develop
 venv/bin/python scripts/devserver.py -p <port>
 ```
 
