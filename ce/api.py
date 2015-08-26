@@ -4,7 +4,7 @@ from json import dumps
 from flask import request
 from werkzeug.wrappers import BaseResponse as Response
 
-def call(request_type):
+def call(session, request_type):
 
     try:
         func = methods[request_type]
@@ -12,16 +12,16 @@ def call(request_type):
         return Response("Bad Request", status=400)
 
     # Check that required args are included in the query params
-    required_params = get_required_args(func)
-    provided_params = request.args.keys()
-    if set(required_params).difference(set(provided_params)):
+    required_params = set(get_required_args(func)).difference(['sesh'])
+    provided_params = set(request.args.keys())
+    if required_params.difference(provided_params):
         return Response("Missing query params", status=400)
 
     # FIXME: Sanitize input
     args = [ request.args.get(key) for key in required_params ]
-    return Response(dumps(func(*args)), content_type='application/json')
+    return Response(dumps(func(session, *args)), content_type='application/json')
 
-def stats(id_, time, area, variable):
+def stats(sesh, id_, time, area, variable):
     return {
         'model_id1':
         {
@@ -34,7 +34,7 @@ def stats(id_, time, area, variable):
         },
     }
 
-def data(id_, time, area, variable):
+def data(sesh, id_, time, area, variable):
     return {
         'model_id1':
         {
@@ -45,10 +45,10 @@ def data(id_, time, area, variable):
         },
     }
 
-def models():
+def models(sesh, ensemble_name='bcsd_downscale_canada'):
     return [ 'model_id{}'.format(i) for i in range(5) ]
 
-def metadata(model_id=None):
+def metadata(sesh, model_id=None):
     return {
         'model_id1':
         {

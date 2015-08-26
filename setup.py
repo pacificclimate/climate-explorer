@@ -21,7 +21,8 @@ setup(
     author="Basil Veerman",
     author_email="bveerman@uvic.ca",
     install_requires = [
-        'flask'
+        'flask',
+        'Flask-SQLAlchemy',
     ],
     scripts = ['scripts/devserver.py'],
     package_dir = {'ce': 'ce'},
