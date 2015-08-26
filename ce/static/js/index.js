@@ -1,7 +1,6 @@
 var React = require("react");
 var Map = require("./components/Map/Map");
 
-// React.render(<Map />,document.getElementById('map'));
 React.render(<Map />, document.body);
 
 var DynamicSearch = require("./components/DynamicSearch/DynamicSearch");
