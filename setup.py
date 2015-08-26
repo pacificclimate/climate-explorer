@@ -23,6 +23,7 @@ setup(
     install_requires = [
         'flask',
         'Flask-SQLAlchemy',
+        'modelmeta'
     ],
     scripts = ['scripts/devserver.py'],
     package_dir = {'ce': 'ce'},
