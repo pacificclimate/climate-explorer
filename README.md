@@ -10,7 +10,7 @@ To set up the Flask server use Virtualenv:
 ```bash
 $ virtualenv venv
 $ source venv/bin/activate
-(venv)$ python setup.py develop
+(venv)$ pip install -i http://tools.pacificclimate.org/pypiserver/ -e .
 (venv)$ python scripts/devserver.py -p <port>
 ```
 
