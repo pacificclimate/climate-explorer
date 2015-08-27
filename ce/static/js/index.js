@@ -1,7 +1,8 @@
 var React = require("react");
-var BCMap = require("./components/Map/Map");
+var BCMap = require("./components/Map/Map").BCMap;
+var CanadaMap = require("./components/Map/Map").CanadaMap;
 
-React.render(<BCMap />, document.body);
+React.render(<CanadaMap />, document.body);
 
 var DynamicSearch = require("./components/DynamicSearch/DynamicSearch");
 var datasets = require("./content/Datasets");
