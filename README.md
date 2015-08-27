@@ -1,5 +1,8 @@
 # PCIC Climate Explorer
 
+[![Build Status](https://travis-ci.org/pacificclimate/climate-explorer.svg?branch=master)](https://travis-ci.org/pacificclimate/climate-explorer)
+[![Code Climate](https://codeclimate.com/github/pacificclimate/climate-explorer/badges/gpa.svg)](https://codeclimate.com/github/pacificclimate/climate-explorer)
+
 ## Development
 
 To set up the Flask server use Virtualenv:

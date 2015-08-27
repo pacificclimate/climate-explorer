@@ -2,6 +2,6 @@ language: python
 python:
   - 3.4
 install:
-  - python setup.py install
+  - pip install -i http://tools.pacificclimate.org/pypiserver/ .
 # command to run tests
 script: py.test -v
