@@ -2,6 +2,13 @@ var React = require("react");
 
 var utils = require("./utils");
 
+var styles = {
+    map: {
+        width: '100%',
+        height: '100%',
+    }
+}
+
 var BCMap = React.createClass({
     componentDidMount: function() {
         var crs = new L.Proj.CRS.TMS(
@@ -43,7 +50,7 @@ var BCMap = React.createClass({
     },
     render: function() {
         return (
-            <div id='map'></div>
+            <div style={styles.map}></div>
         );
     }
 });
