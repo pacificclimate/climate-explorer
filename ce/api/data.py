@@ -20,3 +20,16 @@ model_id2:
     ...
 }
 '''
+
+def data(sesh, id_, time, area, variable):
+    '''
+    '''
+    return {
+        'model_id1':
+        {
+            '2020': 10.0,
+            '2050': 20.0,
+            '2080': 35.0,
+            'units': 'degC'
+        },
+    }

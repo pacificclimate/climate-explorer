@@ -42,3 +42,6 @@ def populateddb(app):
     db.session.add_all([ens0, ens1])
     db.session.commit()
 
+@pytest.fixture
+def test_client(app):
+    return app.test_client()
