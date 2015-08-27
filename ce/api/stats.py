@@ -21,3 +21,18 @@ model_id1:
 model_id2:
     ...}
 '''
+def stats(sesh, id_, time, area, variable):
+    '''
+    '''
+    return {
+        'model_id1':
+        {
+            'min': 0.0,
+            'max': 2.0,
+            'mean': 1.0,
+            'median': 1.0,
+            'stdev': 1.0,
+            'units': 'degC'
+        },
+    }
+
