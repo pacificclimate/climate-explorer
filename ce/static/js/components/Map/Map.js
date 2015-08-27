@@ -1,12 +1,6 @@
 var React = require("react");
 
-var generate_resolutions = function(maxRes, count) {
-    var result = new Array(count);
-    for (var i = 0; i < result.length; i++) {
-        result[i] = maxRes / Math.pow(2, i);
-    };
-    return result;
-}
+var utils = require("./utils");
 
 var BCMap = React.createClass({
     componentDidMount: function() {
@@ -15,7 +9,7 @@ var BCMap = React.createClass({
             '+proj=aea +lat_1=50 +lat_2=58.5 +lat_0=45 +lon_0=-126 +x_0=1000000 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs',
             [-1000000, -1000000, 3000000, 3000000],
             {
-                resolutions: generate_resolutions(7812.5, 12)
+                resolutions: utils.generate_resolutions(7812.5, 12)
             }
         );
 
@@ -63,7 +57,7 @@ var CanadaMap = React.createClass({
             '+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs',
             [-150, -10, -50, 90],
             {
-                resolutions: generate_resolutions(0.09765625, 10)
+                resolutions: utils.generate_resolutions(0.09765625, 10)
             }
         );
 
