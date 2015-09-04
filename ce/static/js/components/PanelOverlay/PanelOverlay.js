@@ -59,16 +59,15 @@ var PanelOverlay = React.createClass({
             maxHeight: this.props.maxHeight
         }
         );
-        console.log(containerStyle);
 
-            return (
-                <div className='' style={containerStyle}>
-                <h3 onClick={ this.handleClick }>{this.props.title}</h3>
-                <div style={m(styles.content,
-                    !this.state.open && styles.hidden)}>{this.props.children}</div>
-                </div>
-                )
-        }
-    });
+        return (
+            <div className='' style={containerStyle}>
+            <h3 onClick={ this.handleClick }>{this.props.title}</h3>
+            <div style={m(styles.content,
+                !this.state.open && styles.hidden)}>{this.props.children}</div>
+            </div>
+        )
+    }
+});
 
 module.exports = PanelOverlay
