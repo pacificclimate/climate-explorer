@@ -12,6 +12,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
+                <CanadaMap></CanadaMap>
                 <PanelOverlay title={'Dataset Selection'} maxHeight={200}>
                     <DatasetList />
                 </PanelOverlay>
@@ -23,6 +24,5 @@ var App = React.createClass({
     }
 
 });
-
 
 React.render(<App />, document.getElementById('wrapper'));

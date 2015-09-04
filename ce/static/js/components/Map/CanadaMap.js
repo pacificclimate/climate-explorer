@@ -4,6 +4,7 @@ var utils = require("./utils");
 
 var styles = {
     map: {
+        position: 'absolute',
         width: '100%',
         height: '100%',
     }
@@ -20,7 +21,7 @@ var CanadaMap = React.createClass({
             }
         );
 
-        var map = L.map(this.getDOMNode(), {
+        var map = this.map = L.map(this.getDOMNode(), {
             crs: crs,
             minZoom: 0,
             maxZoom: 10,
