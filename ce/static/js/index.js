@@ -12,7 +12,10 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                <PanelOverlay title={'TITLE'} width={200} maxHeight={200}>
+                <PanelOverlay title={'Dataset Selection'} maxHeight={200}>
+                    <DatasetList />
+                </PanelOverlay>
+                <PanelOverlay title={'Ensemble Selection'} maxHeight={200}>
                     <DatasetList />
                 </PanelOverlay>
             </div>

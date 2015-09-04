@@ -4,31 +4,42 @@ var m = require("../util.js").merge;
 var styles = {
     root: {
         zIndex: 9999,
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingBottom: 5,
+        marginTop: 10,
+        marginBottom: 10,
+        borderRadius: '0px 10px 10px 0px',
         float: 'left',
-        backgroundColor: 'grey',
+        clear: 'left',
+        backgroundColor: '#333',
+        color: '#DDD',
     },
 
     hidden: {
-        display: 'none'
+        display: 'none',
+    },
+
+    content: {
+        overflowY: 'auto',
     }
 };
 
 var PanelOverlay = React.createClass({
     propTypes: {
-        width: React.PropTypes.number,
+        maxWidth: React.PropTypes.number,
         maxHeight: React.PropTypes.number,
     },
 
     getDefaultProps: function() {
         return {
-            width: 400,
-            maxHeight: 300,
+            maxHeight: 200,
+            maxWidth: 300,
         };
     },
 
     getOpenStyle: function() {
         return {
-            width: this.props.width,
             maxHeight: this.props.maxHeight,
         };
     },
@@ -42,16 +53,22 @@ var PanelOverlay = React.createClass({
     },
 
     render: function() {
-        return (
-            <div style={m(
-                styles.root,
-                this.state.open && this.getOpenStyle)}>
-            <h3 onClick={ this.handleClick }>{this.props.title}</h3>
-            <div style={m(
-                !this.state.open && styles.hidden)}>{this.props.children}</div>
-            </div>
-            )
-    }
-});
+        var containerStyle = m(styles.root,
+        {
+            maxWidth: this.props.maxWidth,
+            maxHeight: this.props.maxHeight
+        }
+        );
+        console.log(containerStyle);
+
+            return (
+                <div className='' style={containerStyle}>
+                <h3 onClick={ this.handleClick }>{this.props.title}</h3>
+                <div style={m(styles.content,
+                    !this.state.open && styles.hidden)}>{this.props.children}</div>
+                </div>
+                )
+        }
+    });
 
 module.exports = PanelOverlay
