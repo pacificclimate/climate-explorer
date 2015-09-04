@@ -12,7 +12,17 @@ model_id2,
 ]
 '''
 
+from modelmeta import *
+
 def models(sesh, ensemble_name='bcsd_downscale_canada'):
     '''
     '''
-    return [ 'model_id{}'.format(i) for i in range(5) ]
+    try:
+        ensemble = sesh.query(Ensemble).filter(Ensemble.name == ensemble_name).first()
+    except:
+        return []
+
+    if not ensemble: # Result does not contain any row therefore ensemble does not exist
+        return []
+
+    return [ dfv.file.unique_id for dfv in ensemble.data_file_variables ]
