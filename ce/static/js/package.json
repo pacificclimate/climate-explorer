@@ -12,10 +12,10 @@
     "leaflet": "0.7.3",
     "proj4": "^2.3.10",
     "proj4leaflet": "^0.7.1",
-    "react": "^0.13.3",
+    "react": "^0.13.3"
   },
   "devDependencies": {
     "jest-cli": "^0.5.1",
-    "jsx-loader": "^0.12.2",
+    "jsx-loader": "^0.12.2"
   }
 }
