@@ -55,8 +55,9 @@ def populateddb(cleandb):
     run0 = Run(name='run0', emission=rcp45)
     run1 = Run(name='run1', emission=rcp45)
 
-    cgcm = Model(short_name='cgcm3', type='GCM', runs=[run0])
-    csiro = Model(short_name='csiro', type='GCM', runs=[run1])
+    cgcm = Model(short_name='cgcm3', long_name='Canadian Global Climate Model (version 3)',
+                 type='GCM', runs=[run0], organization='CCCMA')
+    csiro = Model(short_name='csiro', type='GCM', runs=[run1], organization='CSIRO')
 
     file0 = DataFile(filename='/path/to/some/netcdf_file.nc', unique_id='file0',
                      first_1mib_md5sum='xxxx', x_dim_name='lon',
