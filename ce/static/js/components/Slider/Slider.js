@@ -1,5 +1,4 @@
 var React = require('react');
-var jQuery = require('jquery');
 var BootstrapSlider = require('bootstrap-slider');
 
 var Slider = React.createClass({
@@ -10,16 +9,23 @@ var Slider = React.createClass({
         max: React.PropTypes.number,
         step: React.PropTypes.number,
         value: React.PropTypes.number.isRequired,
+        ticks: React.PropTypes.array,
+        ticksLabels: React.PropTypes.array,
+        ticksPositions: React.PropTypes.array,
         toolTip: React.PropTypes.bool,
         onSlide: React.PropTypes.func
     },
 
     getDefaultProps: function() {
         return {
+            id: '',
             min: 0,
             max: 100,
             step: 1,
             value: 50,
+            ticks: [],
+            ticksLabels: [],
+            ticksPositions: [],
             toolTip: false,
             onSlideStop: function(event) {
                 console.log(event)
@@ -39,6 +45,9 @@ var Slider = React.createClass({
             max: this.props.max,
             step: this.props.step,
             value: this.props.value,
+            ticks: this.props.ticks,
+            ticks_labels: this.props.ticksLabels,
+            ticks_positions: this.props.ticksPositions,
             tooltip: toolTip
         });
 
