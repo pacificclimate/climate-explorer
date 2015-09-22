@@ -63,7 +63,7 @@ var Slider = React.createClass({
 
     render: function() {
         return (
-            <div />
+            <div style={{width: '100%'}} />
         );
     }
 });

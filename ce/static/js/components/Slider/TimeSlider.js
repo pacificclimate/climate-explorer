@@ -7,11 +7,12 @@ var styles = {
     bottom: 20,
     left: 0,
     paddingLeft: 30,
-    paddingRight: 15,
+    paddingRight: 30,
     paddingBottom: 5,
     marginTop: 10,
     marginBottom: 20,
     borderRadius: '0px 10px 10px 0px',
+    width: 600,
     backgroundColor: '#333',
     color: '#DDD'
 };
