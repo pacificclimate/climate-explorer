@@ -9,6 +9,8 @@
   "author": "Basil Veerman <bveerman@uvic.ca>",
   "license": "GPLv3",
   "dependencies": {
+    "bootstrap-slider": "^5.1.0",
+    "jquery": "^2.1.4",
     "leaflet": "0.7.3",
     "proj4": "^2.3.10",
     "proj4leaflet": "^0.7.1",
