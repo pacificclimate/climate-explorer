@@ -13,6 +13,7 @@ var Slider = React.createClass({
         ticksLabels: React.PropTypes.array,
         ticksPositions: React.PropTypes.array,
         toolTip: React.PropTypes.bool,
+        selection: React.PropTypes.string,
         onSlide: React.PropTypes.func
     },
 
@@ -27,6 +28,7 @@ var Slider = React.createClass({
             ticksLabels: [],
             ticksPositions: [],
             toolTip: false,
+            selection: 'none',
             onSlideStop: function(event) {
                 console.log(event)
             }
@@ -48,7 +50,8 @@ var Slider = React.createClass({
             ticks: this.props.ticks,
             ticks_labels: this.props.ticksLabels,
             ticks_positions: this.props.ticksPositions,
-            tooltip: toolTip
+            tooltip: toolTip,
+            selection: this.props.selection,
         });
 
         slider.on('slideStop', function(event) {
