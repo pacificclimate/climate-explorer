@@ -3,7 +3,7 @@ var m = require("../util.js").merge;
 
 var styles = {
     root: {
-        zIndex: 9999,
+        position: 'relative',
         paddingLeft: 15,
         paddingRight: 15,
         paddingBottom: 5,
