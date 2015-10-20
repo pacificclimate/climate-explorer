@@ -3,22 +3,44 @@
 [![Build Status](https://travis-ci.org/pacificclimate/climate-explorer.svg?branch=master)](https://travis-ci.org/pacificclimate/climate-explorer)
 [![Code Climate](https://codeclimate.com/github/pacificclimate/climate-explorer/badges/gpa.svg)](https://codeclimate.com/github/pacificclimate/climate-explorer)
 
+## Containerized Development
+
+Both the back end and front end code can be ran in Docker conatainers.
+
 ## Development
 
-To set up the Flask server use Virtualenv:
+### Back end
+
+Setup using virtualenv:
 
 ```bash
 $ virtualenv venv
 $ source venv/bin/activate
-(venv)$ pip install -i http://tools.pacificclimate.org/pypiserver/ -e .
+(venv)$ pip install -U pip
+(venv)$ pip install --trusted-host tools.pacificclimate.org -i http://tools.pacificclimate.org/pypiserver/ -e .
 (venv)$ python scripts/devserver.py -p <port>
 ```
 
-Any changes to the js files will need node and webpack. We reccomend using [nvm](https://github.com/creationix/nvm) to manage your node/npm install.
+Setup using Docker *IN PROGRESS*:
+
+```bash
+docker build -t climate-explorer-backend backend
+docker run --rm -it -v $(pwd)/backend:/app --name backend climate-explorer-backend
+```
+
+### Front end
+
+Front end code runs on node using webpack. We reccomend using [nvm](https://github.com/creationix/nvm) to manage your node/npm install.
 
 ```bash  
-cd ce/static/js
+cd client
 npm install
-npm install -g webpack
-webpack --watch
-```    
+npm start
+```
+
+Setup using Docker *IN PROGRESS*:
+
+```bash
+docker build -t climate-explorer-frontend client
+docker run --rm -it -v $(pwd)/client:/app --name frontend --link backend climate-explorer-frontend
+```
