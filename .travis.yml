@@ -2,6 +2,6 @@ language: python
 python:
   - 3.4
 install:
-  - pip install -i http://tools.pacificclimate.org/pypiserver/ .
+  - pip install -i http://tools.pacificclimate.org/pypiserver/ ./backend
 # command to run tests
 script: py.test -v
