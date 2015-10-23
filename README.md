@@ -3,9 +3,19 @@
 [![Build Status](https://travis-ci.org/pacificclimate/climate-explorer.svg?branch=master)](https://travis-ci.org/pacificclimate/climate-explorer)
 [![Code Climate](https://codeclimate.com/github/pacificclimate/climate-explorer/badges/gpa.svg)](https://codeclimate.com/github/pacificclimate/climate-explorer)
 
+## Requirements
+
+### Back End
+
+libpq-dev python-dev
+
+### Front End
+
+npm >= 4.0
+
 ## Containerized Development
 
-Both the back end and front end code can be ran in Docker conatainers.
+Both the back end and front end code can be ran in Docker conatainers. *IN PROGRESS*
 
 ## Development
 
