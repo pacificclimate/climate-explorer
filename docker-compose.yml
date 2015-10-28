@@ -2,8 +2,6 @@ backend:
   build: backend
   ports:
    - "8000:8000"
-  volumes:
-   - .:/app
 
 client:
   build: client
@@ -11,4 +9,3 @@ client:
    - "8080:8080"
   links:
    - backend
-

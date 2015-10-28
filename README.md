@@ -52,5 +52,5 @@ Setup using Docker *IN PROGRESS*:
 
 ```bash
 docker build -t climate-explorer-frontend client
-docker run --rm -it -v $(pwd)/client:/app --name frontend --link backend climate-explorer-frontend
+docker run --rm -it -v $(pwd)/client:/app -p 8080:8080 --name frontend --link backend climate-explorer-frontend
 ```
