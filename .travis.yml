@@ -7,4 +7,4 @@ before_install:
 install:
   - pip install -i http://tools.pacificclimate.org/pypiserver/ ./backend
 # command to run tests
-script: py.test -v
+script: py.test -v backend
