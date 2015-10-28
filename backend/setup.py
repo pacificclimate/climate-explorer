@@ -23,10 +23,13 @@ setup(
     install_requires = [
         'flask',
         'Flask-SQLAlchemy',
-        'modelmeta'
+        'modelmeta',
+        'shapely',
+        'numpy',
+        'netcdf4'
     ],
     scripts = ['scripts/devserver.py'],
     package_dir = {'ce': 'ce'},
-    package_data = {'ce': ['templates/*.html'] + recursive_list('ce/', 'ce/static')},
+    package_data = {'ce': ['tests/data/cgcm.nc', 'templates/*.html'] + recursive_list('ce/', 'ce/static')},
     zip_safe=False
 )
