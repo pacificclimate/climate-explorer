@@ -6,7 +6,10 @@ addons:
     packages:
       - libhdf5-serial-dev
       - libnetcdf-dev
+before_install:
+  - nvm install stable
 install:
   - pip install -i http://tools.pacificclimate.org/pypiserver/ ./backend
+  - cd client && npm install
 # command to run tests
 script: py.test -v backend
