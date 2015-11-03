@@ -1,0 +1,34 @@
+#wrapper {
+    width:100%;
+    overflow:hidden;
+}
+
+.content {
+    position: fixed;
+    top: 70px;
+    bottom: 0;
+    left: 300px;
+    right: 300px;
+}
+
+.sidebar {
+    /*position: fixed;*/
+    top: 70px;
+    bottom: 0;
+    width:300px;
+    transition: margin-left 0.5s, margin-right 0.5s;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+.left.closed {
+    background-color: red;
+    margin-left: -50px;
+}
+.right.closed {
+    background-color: red;
+    margin-right: -50px;
+}
