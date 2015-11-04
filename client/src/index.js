@@ -10,7 +10,7 @@ var GraphOverlay = require("./components/DataGraph/GraphOverlay");
 var TableOverlay = require("./components/DataTable/TableOverlay");
 
 import Header from './components/Header';
-import Layout from './views/Index'
+import Layout from './components/IndexPage'
 
 class App extends Component {
 
