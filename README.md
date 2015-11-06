@@ -21,6 +21,10 @@ Both the back end and front end code can be ran in Docker conatainers. *IN PROGR
 
 ### Back end
 
+#### Config
+
+Database dsn can be configured with the MDDB_DSN environment variable. Defaults to 'postgresql://httpd_meta@monsoon.pcic.uvic.ca/pcic_meta'
+
 Setup using virtualenv:
 
 ```bash
@@ -28,7 +32,7 @@ $ virtualenv venv
 $ source venv/bin/activate
 (venv)$ pip install -U pip
 (venv)$ pip install --trusted-host tools.pacificclimate.org -i http://tools.pacificclimate.org/pypiserver/ -e .
-(venv)$ python scripts/devserver.py -p <port>
+(venv)$ MDDB_DSN=postgresql://dbuser@dbhost/dbname python scripts/devserver.py -p <port>
 ```
 
 Setup using Docker *IN PROGRESS*:
