@@ -18,7 +18,7 @@ class App extends Component {
         return (
             <div>
             <Header />
-            <Layout left=<DatasetList /> right={<div><DatasetList /></div>} content=<CanadaMap /> />
+            <Layout left=<DatasetList /> right={<div><GraphOverlay /><TableOverlay /></div>} content=<CanadaMap /> />
             </div>
         );
     }
