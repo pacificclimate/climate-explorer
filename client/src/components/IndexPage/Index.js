@@ -47,7 +47,7 @@ class App extends Component {
       !this.state.lOpen && styles.lclosed
     )
     return (
-      <div>
+      <div className={styles.wrapper}>
         <div className={lClass}>
           {this.props.left}
         </div>
@@ -63,5 +63,5 @@ class App extends Component {
     )
   }
 }
-console.log(styles)
+
 export default App
