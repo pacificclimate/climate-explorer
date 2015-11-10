@@ -3,3 +3,9 @@
 	padding: 15px 0px;
 	height: 70px;
 }
+
+.left {
+	display: inline;
+	float: left;
+	padding: 0 15px;
+}
