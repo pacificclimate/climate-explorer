@@ -22,7 +22,6 @@ class Header extends Component {
               <ExperimentSelector />
             </Col>
             <Col lg={4}>
-              <ExperimentSelector />
             </Col>
           </Row>
         </Grid>
