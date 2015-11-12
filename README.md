@@ -51,15 +51,15 @@ Front end code runs on node using webpack. We reccomend using [nvm](https://gith
 Front end configuration uses environment variables.
 
 * CE_BACKEND_URL
-** Publicly accessible URL for backend climate data
-** Development default: http://localhost:8000/api
-** Production default: http://tools.pacificclimate.org/climate-data
+  * Publicly accessible URL for backend climate data
+  * Development default: http://localhost:8000/api
+  * Production default: http://tools.pacificclimate.org/climate-data
 * TILECACHE_URL
-** Tilecache URL for basemap layers
-** default: http://tiles.pacificclimate.org/tilecache/tilecache.py
+  * Tilecache URL for basemap layers
+  * default: http://tiles.pacificclimate.org/tilecache/tilecache.py
 * NCWMS_URL
-** ncWMS URL for climate layers
-** default: http://tools.pacificclimate.org/ncWMS/wms
+  * ncWMS URL for climate layers
+  * default: http://tools.pacificclimate.org/ncWMS/wms
 
 ```bash  
 cd client
