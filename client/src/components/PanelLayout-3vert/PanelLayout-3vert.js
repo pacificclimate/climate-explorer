@@ -46,16 +46,19 @@ class App extends Component {
       !this.state.rOpen && styles.rclosed,
       !this.state.lOpen && styles.lclosed
     )
+
+        // <div className={rClass}>
+        //   {this.props.right}
+        //   <div className={classNames(styles.dragbar, styles.right)}></div>
+        // </div>
+
     return (
-      <div className={styles.wrapper}>
+      <div>
         <div className={lClass}>
           {this.props.left}
           <div className={classNames(styles.dragbar, styles.left)}></div>
         </div>
-        <div className={rClass}>
-          {this.props.right}
-          <div className={classNames(styles.dragbar, styles.right)}></div>
-        </div>
+
         <div className={contentClass}>
           <button onClick={this.toggleLeft.bind(this)}>Toggle Left</button>
           <button onClick={this.toggleRight.bind(this)}>Toggle Right</button>

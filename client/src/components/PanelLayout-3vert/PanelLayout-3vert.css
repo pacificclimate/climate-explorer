@@ -1,9 +1,14 @@
+:root {
+    --lwidth: 300px;
+    --rwidth: 600px;
+};
+
 .content {
-    position: fixed;
-    top: 70px;
+    position: absolute;
+    top: 0;
     bottom: 0;
-    left: 300px;
-    right: 600px;
+    left: var(--lwidth);
+    right: var(--rwidth);
     transition: left 0.5s, right 0.5s;
 }
 
@@ -16,23 +21,24 @@
 }
 
 .sidebar {
-    top: 70px;
+    position: absolute;
+    top: 0;
     bottom: 0;
     transition: margin-left 0.5s, margin-right 0.5s;
 }
 .left {
-    width:300px;
+    width: var(--lwidth);
     float: left;
 }
 .right {
-    width:600px;
+    width: var(--rwidth);
     float: right;
 }
 .left.closed {
-    margin-left: -300px;
+    margin-left: -var(--lwidth);
 }
 .right.closed {
-    margin-right: -600px;
+    margin-right: -var(--rwidth);
 }
 
 .dragbar {
