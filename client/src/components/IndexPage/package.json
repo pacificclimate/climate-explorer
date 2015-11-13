@@ -1,6 +1,6 @@
 {
-  "name": "Index",
+  "name": "IndexPage",
   "version": "0.0.0",
   "private": true,
-  "main": "./Index.js"
+  "main": "./IndexPage.js"
 }
