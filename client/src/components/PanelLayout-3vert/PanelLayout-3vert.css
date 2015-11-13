@@ -1,6 +1,7 @@
 :root {
     --lwidth: 300px;
     --rwidth: 600px;
+    --barwidth: 25px;
 };
 
 .content {
@@ -27,7 +28,7 @@
     transition: margin-left 0.5s, margin-right 0.5s;
 }
 .left {
-    width: var(--lwidth);
+    width: calc(var(--lwidth) - var(--barwidth));
     float: left;
 }
 .right {
@@ -44,7 +45,7 @@
 .dragbar {
     background-color:black;
     height:100%;
-    width: 25px;
+    width: var(--barwidth);
     cursor: col-resize;
 }
 

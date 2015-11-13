@@ -4,6 +4,44 @@ import classNames from 'classnames';
 
 import styles from './PanelLayout-3vert.css';
 
+class LSidebar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  static propTypes = {
+    content: PropTypes.node.isRequired,
+  }
+
+  render () {
+    return (
+      <div>
+        <div style={{float: 'left'}}>{this.props.content}</div>
+        <div className={classNames(styles.dragbar, styles.left)}></div>
+      </div>
+    )
+  }
+}
+
+class RSidebar extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  static propTypes = {
+    content: PropTypes.node.isRequired,
+  }
+
+  render () {
+    return (
+      <div>
+        <div style={{float: 'right'}}>{this.props.content}</div>
+        <div className={classNames(styles.dragbar, styles.left)}></div>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -48,17 +86,14 @@ class App extends Component {
     )
 
         // <div className={rClass}>
-        //   {this.props.right}
-        //   <div className={classNames(styles.dragbar, styles.right)}></div>
+        //   <RSidebar content={this.props.right} />
         // </div>
 
     return (
       <div>
         <div className={lClass}>
-          {this.props.left}
-          <div className={classNames(styles.dragbar, styles.left)}></div>
+          <LSidebar content={this.props.left} />
         </div>
-
         <div className={contentClass}>
           <button onClick={this.toggleLeft.bind(this)}>Toggle Left</button>
           <button onClick={this.toggleRight.bind(this)}>Toggle Right</button>
