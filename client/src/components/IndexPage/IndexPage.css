@@ -1,55 +1,17 @@
-.wrapper {
-    overflow: hidden;
+.header {
+    height: 70px;
 }
 
 .content {
     position: fixed;
     top: 70px;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+}
+
+.footer {
+    position: fixed;
     bottom: 0;
-    left: 300px;
-    right: 600px;
-    transition: left 0.5s, right 0.5s;
-}
-
-.content.lclosed {
-    left: 0px;
-}
-
-.content.rclosed {
-    right: 0px;
-}
-
-.sidebar {
-    top: 70px;
-    bottom: 0;
-    transition: margin-left 0.5s, margin-right 0.5s;
-}
-.left {
-    width:300px;
-    float: left;
-}
-.right {
-    width:600px;
-    float: right;
-}
-.left.closed {
-    margin-left: -300px;
-}
-.right.closed {
-    margin-right: -600px;
-}
-
-.dragbar {
-    background-color:black;
-    height:100%;
-    width: 25px;
-    cursor: col-resize;
-}
-
-.dragbar.left {
-    float: right;
-}
-
-.dragbar.right {
-    float: left;
+    height: 50px;
 }
