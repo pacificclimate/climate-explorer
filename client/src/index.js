@@ -9,17 +9,13 @@ var css = require("./styles/base.css")
 var GraphOverlay = require("./components/DataGraph/GraphOverlay");
 var TableOverlay = require("./components/DataTable/TableOverlay");
 
-import Header from './components/Header';
-import Layout from './components/IndexPage'
+import IndexPage from './components/IndexPage'
 
 class App extends Component {
 
     render() {
         return (
-            <div>
-            <Header />
-            <Layout left=<DatasetList /> right={<div><GraphOverlay /><TableOverlay /></div>} content=<CanadaMap /> />
-            </div>
+            <IndexPage left=<DatasetList /> right={<div><GraphOverlay /><TableOverlay /></div>} content=<CanadaMap /> />
         );
     }
 }

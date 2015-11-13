@@ -2,6 +2,8 @@ import React, { PropTypes, Component } from 'react';
 
 import classNames from 'classnames';
 
+import Header from '../Header';
+
 import styles from './Index.css';
 
 class App extends Component {
@@ -47,20 +49,24 @@ class App extends Component {
       !this.state.lOpen && styles.lclosed
     )
     return (
+      <div>
+      <Header />
+
       <div className={styles.wrapper}>
         <div className={lClass}>
-          <div className={classNames(styles.dragbar, styles.left)}></div>
           {this.props.left}
+          <div className={classNames(styles.dragbar, styles.left)}></div>
         </div>
         <div className={rClass}>
-          <div className={classNames(styles.dragbar, styles.right)}></div>
           {this.props.right}
+          <div className={classNames(styles.dragbar, styles.right)}></div>
         </div>
         <div className={contentClass}>
           <button onClick={this.toggleLeft.bind(this)}>Toggle Left</button>
           <button onClick={this.toggleRight.bind(this)}>Toggle Right</button>
           {this.props.content}
         </div>
+      </div>
       </div>
     )
   }
