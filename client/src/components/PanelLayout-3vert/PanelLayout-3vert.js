@@ -4,38 +4,6 @@ import classNames from 'classnames';
 
 import styles from './PanelLayout-3vert.css';
 
-class LSidebar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  static propTypes = {
-    content: PropTypes.node.isRequired,
-  }
-
-  render () {
-    return (
-      <div style={{float: 'left'}}>{this.props.content}</div>
-    )
-  }
-}
-
-class RSidebar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  static propTypes = {
-    content: PropTypes.node.isRequired,
-  }
-
-  render () {
-    return (
-      <div style={{float: 'right'}}>{this.props.content}</div>
-    )
-  }
-}
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -78,10 +46,6 @@ class App extends Component {
       !this.state.rOpen && styles.rclosed,
       !this.state.lOpen && styles.lclosed
     )
-
-        // <div className={rClass}>
-        //   <RSidebar content={this.props.right} />
-        // </div>
 
     return (
       <div>
