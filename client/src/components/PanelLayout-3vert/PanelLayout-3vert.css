@@ -8,51 +8,62 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    left: var(--lwidth);
+    left: calc(var(--lwidth) + var(--barwidth));
     right: var(--rwidth);
     transition: left 0.5s, right 0.5s;
 }
 
 .content.lclosed {
-    left: 0px;
+    left: var(--barwidth);
 }
 
 .content.rclosed {
-    right: 0px;
+    right: var(--barwidth);
 }
 
 .sidebar {
-    position: absolute;
+    /*position: absolute;*/
     top: 0;
     bottom: 0;
     transition: margin-left 0.5s, margin-right 0.5s;
 }
-.left {
-    width: calc(var(--lwidth) - var(--barwidth));
+.sidebar.left {
+    width: var(--lwidth);
     float: left;
 }
-.right {
+.sidebar.right {
     width: var(--rwidth);
     float: right;
 }
-.left.closed {
+.sidebar.left.closed {
     margin-left: -var(--lwidth);
 }
-.right.closed {
+.sidebar.right.closed {
     margin-right: -var(--rwidth);
 }
 
 .dragbar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
     background-color:black;
-    height:100%;
     width: var(--barwidth);
     cursor: col-resize;
+    transition: left 0.5s, right 0.5s;
 }
 
 .dragbar.left {
-    float: right;
+    left: calc(var(--lwidth));
 }
 
 .dragbar.right {
     float: left;
+}
+
+.dragbar.left.closed {
+    left: 0;
+}
+
+.dragbar.right.closed {
+    right: 0;
 }

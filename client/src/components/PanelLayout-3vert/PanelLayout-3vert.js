@@ -15,10 +15,7 @@ class LSidebar extends Component {
 
   render () {
     return (
-      <div>
-        <div style={{float: 'left'}}>{this.props.content}</div>
-        <div className={classNames(styles.dragbar, styles.left)}></div>
-      </div>
+      <div style={{float: 'left'}}>{this.props.content}</div>
     )
   }
 }
@@ -34,10 +31,7 @@ class RSidebar extends Component {
 
   render () {
     return (
-      <div>
-        <div style={{float: 'right'}}>{this.props.content}</div>
-        <div className={classNames(styles.dragbar, styles.left)}></div>
-      </div>
+      <div style={{float: 'right'}}>{this.props.content}</div>
     )
   }
 }
@@ -92,10 +86,10 @@ class App extends Component {
     return (
       <div>
         <div className={lClass}>
-          <LSidebar content={this.props.left} />
+          {this.props.left}
         </div>
+        <div className={classNames(styles.dragbar, styles.left, !this.state.lOpen && styles.closed)} onClick={this.toggleLeft.bind(this)}></div>
         <div className={contentClass}>
-          <button onClick={this.toggleLeft.bind(this)}>Toggle Left</button>
           <button onClick={this.toggleRight.bind(this)}>Toggle Right</button>
           {this.props.content}
         </div>
