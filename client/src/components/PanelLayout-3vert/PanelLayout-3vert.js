@@ -89,8 +89,13 @@ class App extends Component {
           {this.props.left}
         </div>
         <div className={classNames(styles.dragbar, styles.left, !this.state.lOpen && styles.closed)} onClick={this.toggleLeft.bind(this)}></div>
+
+        <div className={rClass}>
+          {this.props.right}
+        </div>
+        <div className={classNames(styles.dragbar, styles.right, !this.state.rOpen && styles.closed)} onClick={this.toggleRight.bind(this)}></div>
+
         <div className={contentClass}>
-          <button onClick={this.toggleRight.bind(this)}>Toggle Right</button>
           {this.props.content}
         </div>
       </div>

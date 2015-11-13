@@ -9,7 +9,7 @@
     top: 0;
     bottom: 0;
     left: calc(var(--lwidth) + var(--barwidth));
-    right: var(--rwidth);
+    right: calc(var(--rwidth) + var(--barwidth));
     transition: left 0.5s, right 0.5s;
 }
 
@@ -22,7 +22,6 @@
 }
 
 .sidebar {
-    /*position: absolute;*/
     top: 0;
     bottom: 0;
     transition: margin-left 0.5s, margin-right 0.5s;
@@ -57,7 +56,7 @@
 }
 
 .dragbar.right {
-    float: left;
+    right: calc(var(--rwidth));
 }
 
 .dragbar.left.closed {
