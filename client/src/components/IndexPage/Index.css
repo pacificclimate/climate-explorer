@@ -38,3 +38,18 @@
 .right.closed {
     margin-right: -600px;
 }
+
+.dragbar {
+    background-color:black;
+    height:100%;
+    width: 25px;
+    cursor: col-resize;
+}
+
+.dragbar.left {
+    float: right;
+}
+
+.dragbar.right {
+    float: left;
+}

@@ -49,9 +49,11 @@ class App extends Component {
     return (
       <div className={styles.wrapper}>
         <div className={lClass}>
+          <div className={classNames(styles.dragbar, styles.left)}></div>
           {this.props.left}
         </div>
         <div className={rClass}>
+          <div className={classNames(styles.dragbar, styles.right)}></div>
           {this.props.right}
         </div>
         <div className={contentClass}>
