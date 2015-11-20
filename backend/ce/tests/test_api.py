@@ -317,7 +317,9 @@ test_polygons = {# Metro Van 10 vertex
     ('data', {'model': '', 'emission': '', 'time': '0', 'area': '', 'variable': ''}),
     ('timeseries', {'id_': '', 'area': '', 'variable': ''}),
     ('models', {}),
-    ('metadata', {'model_id': 'file0'})
+    ('metadata', {'model_id': 'file0'}),
+    ('multimeta', {'model': ''}),
+    ('lister', {'model': ''})
 ])
 def test_api_endpoints_are_callable(test_client, cleandb, endpoint, query_params):
     url = '/api/' + endpoint
@@ -326,8 +328,17 @@ def test_api_endpoints_are_callable(test_client, cleandb, endpoint, query_params
 
 def test_models(populateddb):
     sesh = populateddb.session
-    rv = models(sesh, 'bc_prism')
+    rv = models(sesh, 'ce')
     assert rv
+
+@pytest.mark.parametrize(('args', 'expected'), [
+    ({'ensemble_name': 'bccaqv2'}, ['file0']),
+    ({'model': 'csiro'}, ['file1', 'file2'])
+])
+def test_lister(populateddb, args, expected):
+    sesh = populateddb.session
+    rv = lister(sesh, **args)
+    assert rv == expected
 
 @pytest.mark.parametrize(('unique_id'), ('file0', 'file1'))
 def test_metadata(populateddb, unique_id):
@@ -337,6 +348,13 @@ def test_metadata(populateddb, unique_id):
     for key in ['institute_id', 'institution', 'model_id', 'model_name',
                 'experiment', 'variables', 'ensemble_member']:
         assert key in rv[unique_id]
+
+@pytest.mark.parametrize(('model'), ('cgcm3', ''))
+def test_multimeta(populateddb, model):
+    sesh = populateddb.session
+    rv = multimeta(sesh, model=model)
+    assert 'file0' in rv
+    assert rv['file0']['model_id'] == 'cgcm3'
 
 @pytest.mark.parametrize(('polygon'), test_polygons.values(), ids=list(test_polygons.keys()))
 def test_stats(populateddb, polygon):
