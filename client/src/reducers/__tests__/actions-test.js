@@ -1,7 +1,7 @@
 jest.dontMock('../actions');
 jest.dontMock('immutable');
 
-import {fromJS} from 'immutable';
+import {Map, fromJS} from 'immutable';
 import {setModels} from '../actions';
 
 const prismMeta = {
@@ -25,7 +25,7 @@ describe('state modifications', () => {
       const state = Map();
       const models = fromJS(prismMeta);
       const nextState = setModels(state, prismMeta);
-      expect(nextState).to.equal(Map({
+      expect(nextState).toEqual(Map({
         models: Map({
           "pr_monClim_PRISM_historical_run1_197101-200012": Map({
             "model_id": "PRISM",
