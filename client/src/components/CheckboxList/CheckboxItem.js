@@ -14,6 +14,10 @@ var CheckboxItem = React.createClass({
         };
     },
 
+    // onChange(){
+    //     console.log('CheckboxItem::onChange() called');
+    // },
+
     render: function () {
         return (
             <div>

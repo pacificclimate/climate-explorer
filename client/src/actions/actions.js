@@ -1,22 +1,24 @@
-import * as types from '../constants/ActionTypes'
+import * as actions from '../constants/ActionTypes'
 
 export function updateClimateLayer(uniqueID) {
+  console.log('actions:updateClimateLayer() called')
   return {
-    type: types.UPDATE_CLIMATE_LAYER,
+    type: actions.UPDATE_CLIMATE_LAYER,
     uniqueID
   }
 }
 
 export function updateClimateVariable(variable) {
   return {
-    type: types.UPDATE_CLIMATE_VARIABLE,
+    console.log('actions:updateClimateVariable() called');
+    type: actions.UPDATE_CLIMATE_VARIABLE,
     variable
   }
 }
 
 export function updateDataVariable(variable) {
   return {
-    type: types.UPDATE_DATA_VARIABLE,
+    type: actions.UPDATE_DATA_VARIABLE,
     variable
   }
 }
