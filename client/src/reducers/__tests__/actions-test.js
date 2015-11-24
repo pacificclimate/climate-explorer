@@ -1,6 +1,6 @@
 jest.dontMock('../actions.js');
 
-import {Map} from 'immutable';
+import Immutable, {Map} from 'immutable';
 
 const prismMeta = {
   "pr_monClim_PRISM_historical_run1_197101-200012": {
@@ -19,6 +19,14 @@ const prismMeta = {
 
 describe('state modifications', () => {
 
+  beforeEach(function () {
+    this.addMatchers({
+      toEqualImmutable: function(expected) {
+        return Immutable.is(this.actual, expected);
+      }
+    })
+  })
+
   describe('addModels', () => {
     var setModels = require('../actions').setModels;
 
@@ -26,14 +34,14 @@ describe('state modifications', () => {
       const state = Map();
       const models = Map(prismMeta);
       const nextState = setModels(state, models);
-      const expected = Map().set('models', Map(prismMeta));
-      expect(nextState).toEqual(expected);
+      const expected = Map({'models': Map(prismMeta)});
+      expect(nextState).toEqualImmutable(expected);
     });
 
     it('converts to immutable', () => {
       const state = Map();
       const nextState = setModels(state, prismMeta);
-      expect(nextState).toEqual(Map().set('models', Map(prismMeta)));
+      expect(nextState).toEqualImmutable(Map({'models': Map(prismMeta)}));
     });
 
 
