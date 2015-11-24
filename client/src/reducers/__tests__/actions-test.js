@@ -1,14 +1,14 @@
-jest.dontMock('../actions');
-jest.dontMock('immutable');
+jest.dontMock('../actions.js');
 
-import {Map, fromJS} from 'immutable';
-import {setModels} from '../actions';
+import {Map} from 'immutable';
 
 const prismMeta = {
   "pr_monClim_PRISM_historical_run1_197101-200012": {
     "model_id": "PRISM",
     "variables": {
-      "pr": "Precipitation Climatology"
+      "pr": "Precipitation Climatology",
+      "tmax": "Temperature Climatology (Maximum)",
+      "tmin": "Temperature Climatology (Minimum)"
     },
     "model_name": null,
     "experiment": "historical",
@@ -19,27 +19,23 @@ const prismMeta = {
 
 describe('state modifications', () => {
 
-  describe('initializing state', () => {
+  describe('addModels', () => {
+    var setModels = require('../actions').setModels;
 
     it('adds the models to the state', () => {
       const state = Map();
-      const models = fromJS(prismMeta);
-      const nextState = setModels(state, prismMeta);
-      expect(nextState).toEqual(Map({
-        models: Map({
-          "pr_monClim_PRISM_historical_run1_197101-200012": Map({
-            "model_id": "PRISM",
-            "variables": Map({
-              "pr": "Precipitation Climatology"
-            }),
-            "model_name": null,
-            "experiment": "historical",
-            "ensemble_member": "run1",
-            "institution": ""
-          })
-        })
-      }));
+      const models = Map(prismMeta);
+      const nextState = setModels(state, models);
+      const expected = Map().set('models', Map(prismMeta));
+      expect(nextState).toEqual(expected);
     });
+
+    it('converts to immutable', () => {
+      const state = Map();
+      const nextState = setModels(state, prismMeta);
+      expect(nextState).toEqual(Map().set('models', Map(prismMeta)));
+    });
+
 
   });
 
