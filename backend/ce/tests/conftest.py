@@ -49,6 +49,7 @@ def populateddb(cleandb):
     sesh = populateable_db.session
     ens0 = Ensemble(name='bccaqv2', version=1.0, changes='', description='')
     ens1 = Ensemble(name='bc_prism', version=2.0, changes='', description='')
+    ens2 = Ensemble(name='ce', version=2.0, changes='', description='')
 
     rcp45 = Emission(short_name='rcp45')
     rcp85 = Emission(short_name='rcp85')
@@ -68,10 +69,14 @@ def populateddb(cleandb):
                      unique_id='file1', first_1mib_md5sum='xxxx',
                      x_dim_name='lon', y_dim_name='lat', index_time=now,
                      run=run1)
+    file2 = DataFile(filename='/path/to/some/other/netcdf_file.nc',
+                     unique_id='file2', first_1mib_md5sum='xxxx',
+                     x_dim_name='lon', y_dim_name='lat', index_time=now,
+                     run=run1)
 
-    tmin = VariableAlias(long_name='Daily Minimum Temperature',
+    tasmin = VariableAlias(long_name='Daily Minimum Temperature',
                          standard_name='air_temperature', units='degC')
-    tmax = VariableAlias(long_name='Daily Maximum Temperature',
+    tasmax = VariableAlias(long_name='Daily Maximum Temperature',
                          standard_name='air_temperature', units='degC')
 
     anuspline_grid = Grid(name='Canada ANUSPLINE', xc_grid_step=0.0833333,
@@ -80,24 +85,42 @@ def populateddb(cleandb):
                           xc_units='degrees_east', yc_units='degrees_north',
                           evenly_spaced_y=True)
 
-    sesh.add_all([ens0, ens1, cgcm, csiro, file0, file1, tmin, tmax,
+    sesh.add_all([ens0, ens1, cgcm, csiro, file0, file1, file2, tasmin, tasmax,
                   anuspline_grid])
     sesh.flush()
 
     tmin = DataFileVariable(netcdf_variable_name='tasmin', range_min=0,
                             range_max=50, file=file0,
-                            variable_alias=tmin, grid=anuspline_grid)
+                            variable_alias=tasmin, grid=anuspline_grid)
     tmax = DataFileVariable(netcdf_variable_name='tasmax', range_min=0,
                             range_max=50, file=file0,
-                            variable_alias=tmax, grid=anuspline_grid)
+                            variable_alias=tasmax, grid=anuspline_grid)
 
-    sesh.add_all([tmin, tmax])
+    tmin1 = DataFileVariable(netcdf_variable_name='tasmin', range_min=0,
+                            range_max=50, file=file1,
+                            variable_alias=tasmin, grid=anuspline_grid)
+    tmax1 = DataFileVariable(netcdf_variable_name='tasmax', range_min=0,
+                            range_max=50, file=file2,
+                            variable_alias=tasmax, grid=anuspline_grid)
+
+    sesh.add_all([tmin, tmax, tmin1, tmax1])
 
     sesh.flush()
 
     ens0.data_file_variables.append(tmin)
     ens1.data_file_variables.append(tmax)
+    ens2.data_file_variables.append(tmin)
+    ens2.data_file_variables.append(tmax)
+    ens2.data_file_variables.append(tmin1)
+    ens2.data_file_variables.append(tmax1)
 
+    sesh.add_all(sesh.dirty)
+
+    ts = TimeSet(calendar='gregorian', start_date=datetime(1971, 1, 1),
+                 end_date=datetime(2000, 12, 31), multi_year_mean=True,
+                 num_times=12, time_resolution='other',
+                 times = [ Time(time_idx=i, timestep=datetime(1985, 1+i, 15)) for i in range(12) ])
+    ts.files = [file0]
     sesh.add_all(sesh.dirty)
 
     sesh.commit()

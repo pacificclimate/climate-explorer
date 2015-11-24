@@ -21,7 +21,7 @@ model_id2:
 }
 '''
 
-from modelmeta import *
+from modelmeta import DataFile
 
 def metadata(sesh, model_id=None):
     '''
@@ -36,15 +36,14 @@ def metadata(sesh, model_id=None):
 
     rv = {}
     for f in files:
-        vars = [ a.long_name for a in [ v.variable_alias for v in f.data_file_variables ] ]
+        vars = {dfv.netcdf_variable_name: a.long_name for a, dfv in [ (dfv.variable_alias, dfv) for dfv in f.data_file_variables ]}
 
         rv[f.unique_id] = {
-            'institute_id': 'What is this?',
             'institution': f.run.model.organization,
             'model_id': f.run.model.short_name,
             'model_name': f.run.model.long_name,
             'experiment': f.run.emission.short_name,
             'variables': vars,
-            'ensemble_member': 'What is this?'
+            'ensemble_member': f.run.name
         }
     return rv

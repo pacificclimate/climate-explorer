@@ -13,14 +13,20 @@ from flask import request
 
 from ce.api.stats import stats
 from ce.api.data import data
+from ce.api.timeseries import timeseries
 from ce.api.models import models
 from ce.api.metadata import metadata
+from ce.api.multimeta import multimeta
+from ce.api.lister import lister
 
 methods = {
     'stats': stats,
     'data': data,
     'models': models,
-    'metadata': metadata
+    'metadata': metadata,
+    'multimeta': multimeta,
+    'timeseries': timeseries,
+    'lister': lister
 }
 
 __all__ = list(methods.keys()) + ['call']
@@ -55,6 +61,9 @@ def call(session, request_type):
     kwargs = { key: request.args.get(key) for key in optional_params if request.args.get(key) is not None }
     args.update(kwargs)
     return Response(
+        # Note: all arguments to the delgate functions are necessarily strings
+        # at this point, since they're all coming through the URL query
+        # parameters
         dumps(func(session, **args)),
         content_type='application/json'
     )
