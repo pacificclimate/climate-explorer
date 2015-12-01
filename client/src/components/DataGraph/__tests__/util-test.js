@@ -2,7 +2,6 @@ jest.dontMock('../util');
 jest.dontMock('underscore');
 
 var _ = require('underscore');
-var util = require('util');
 
 
 const testData = {
@@ -59,12 +58,6 @@ describe('parseC3Data', function() {
 
         var result = parseC3Data(testData);
         var expected = [outputModelsData, outputAxisInfo];
-
-        // including console logs here because the order that parseC3Data steps through 
-        // models within the original testData object is not predictable
-        // console.log(util.inspect(expected, false, null));
-        // console.log('########################');
-        // console.log(util.inspect(result, false, null));
 
         var res = _.isEqual(result, expected);
         expect(res).toEqual(true);
