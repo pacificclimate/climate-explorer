@@ -1,0 +1,6 @@
+{
+  "name": "GraphController",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./GraphController.js"
+}

@@ -6,7 +6,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 
 import MapController from '../MapController';
-import GraphOverlay from '../DataGraph/GraphOverlay';
+import GraphController from '../GraphController';
 import TableOverlay from '../DataTable/TableOverlay';
 import Selector from '../Selector';
 
@@ -98,7 +98,7 @@ var App = React.createClass({
             </div>
           </Col>
           <Col lg={6}>
-            <GraphOverlay />
+            <GraphController />
             <TableOverlay />
           </Col>
         </Row>
