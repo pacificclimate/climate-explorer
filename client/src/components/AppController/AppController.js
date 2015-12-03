@@ -5,11 +5,9 @@ import { Input } from 'react-bootstrap';
 import { Grid, Row, Col } from 'react-bootstrap';
 import classNames from 'classnames';
 
-import MapController from '../MapController';
-import GraphOverlay from '../DataGraph/GraphOverlay';
-import TableOverlay from '../DataTable/TableOverlay';
-import Selector from '../Selector';
-
+import MapController from '../MapController/MapController';
+import DataController from '../DataController/DataController';
+import Selector from '../Selector/Selector';
 import styles from './AppController.css';
 
 var App = React.createClass({
@@ -98,8 +96,7 @@ var App = React.createClass({
             </div>
           </Col>
           <Col lg={6}>
-            <GraphOverlay />
-            <TableOverlay />
+            <DataController />
           </Col>
         </Row>
       </Grid>
