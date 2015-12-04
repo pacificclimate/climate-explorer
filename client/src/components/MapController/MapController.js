@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { Input } from 'react-bootstrap';
+import { Input, Row, Col } from 'react-bootstrap';
 
 import classNames from 'classnames';
 
@@ -18,6 +18,7 @@ var MapController = React.createClass({
   getInitialState: function () {
     return {
       styles: "boxfill/ferret",
+      timeofyear: "Annual",
       time: "2000-01-01",
       colorscalerange: "-50,11.0",
       logscale: false
@@ -44,13 +45,26 @@ var MapController = React.createClass({
   render: function () {
     return (
       <div>
-        <div className={styles.selector}>
-          <Selector label={"Color pallette"} onChange={this.updateSelection.bind(this, 'styles')} items={['boxfill/ferret', 'boxfill/rainbow', 'boxfill/occam', 'boxfill/occam_inv']} />
-          <Selector label={"Log scale?"} onChange={this.updateSelection.bind(this, 'logscale')} items={['false', 'true']} />
-        </div>
-        <div className={styles.map}>
-        <CanadaMap {...this.state} {...this.props} onSetArea={this.handleSetArea} />
-        </div>
+        <Input>
+          <Row>
+            <Col lg={4}>
+              <Selector label={"Color pallette"} onChange={this.updateSelection.bind(this, 'styles')} items={['boxfill/ferret', 'boxfill/rainbow', 'boxfill/occam', 'boxfill/occam_inv']} />
+            </Col>
+            <Col lg={4}>
+              <Selector label={"Log scale?"} onChange={this.updateSelection.bind(this, 'logscale')} items={['false', 'true']} />
+            </Col>
+            <Col lg={4}>
+              <Selector label={"Time of year"} onChange={this.updateSelection.bind(this, 'timeofyear')} items={['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'Winter - DJF', 'Spring - MAM', 'Summer - JJA', 'Fall - SON', 'Annual']} />
+            </Col>
+          </Row>
+        </Input>
+        <Row>
+          <Col lg={12}>
+            <div className={styles.map}>
+              <CanadaMap {...this.state} {...this.props} onSetArea={this.handleSetArea} />
+            </div>
+          </Col>
+        </Row>
       </div>
     )
   }
