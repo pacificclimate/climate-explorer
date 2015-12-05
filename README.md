@@ -32,14 +32,16 @@ $ virtualenv venv
 $ source venv/bin/activate
 (venv)$ pip install -U pip
 (venv)$ pip install --trusted-host tools.pacificclimate.org -i http://tools.pacificclimate.org/pypiserver/ -e .
-(venv)$ MDDB_DSN=postgresql://dbuser@dbhost/dbname python scripts/devserver.py -p <port>
+(venv)$ MDDB_DSN=postgresql://dbuser:dbpass@dbhost/dbname python scripts/devserver.py -p <port>
 ```
 
 Setup using Docker *IN PROGRESS*:
 
+While this will run a functional container, you must also link in all appropriate data to the correct location defined in the metadata database. Use multiple `-v /data/location:/data/location` options to mount them in the container. If using the test data is sufficient, use `-e "MDDB_DSN=sqlite:////app/ce/tests/data/test.sqlite" when running the container
+
 ```bash
 docker build -t climate-explorer-backend backend
-docker run --rm -it -v $(pwd)/backend:/app --name backend climate-explorer-backend
+docker run --rm -it -p 8000:8000 -e "MDDB_DSN=postgresql://dbuser:dbpass@dbhost/dbname" -v $(pwd)/backend:/app --name backend climate-explorer-backend
 ```
 
 ### Front end
@@ -59,7 +61,7 @@ Front end configuration uses environment variables.
   * default: http://tiles.pacificclimate.org/tilecache/tilecache.py
 * NCWMS_URL
   * ncWMS URL for climate layers
-  * default: http://tools.pacificclimate.org/ncWMS/wms
+  * default: http://tools.pacificclimate.org/ncWMS-PCIC/wms
 
 ```bash  
 cd client
@@ -71,5 +73,5 @@ Setup using Docker *IN PROGRESS*:
 
 ```bash
 docker build -t climate-explorer-frontend client
-docker run --rm -it -v $(pwd)/client:/app -p 8080:8080 --name frontend --link backend climate-explorer-frontend
+docker run --rm -it -e "CE_BACKEND_URL=http://localhost:8000/api" -v $(pwd)/client:/app -p 8080:8080 --name frontend climate-explorer-frontend
 ```
