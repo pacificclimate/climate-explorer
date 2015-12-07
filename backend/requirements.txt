@@ -1,9 +1,0 @@
-Flask
-Flask-SQLAlchemy
-Flask-Cors
-modelmeta
-shapely
-numpy
-netcdf4
-# For testing
-python-dateutil
