@@ -96,7 +96,8 @@ var App = React.createClass({
             </div>
           </Col>
           <Col lg={6}>
-            <DataController />
+            <DataController model_id={this.state.model_id} variable={this.state.variable_id} 
+              experiment={this.state.experiment} area={this.state.area} unique_id={this.findUniqueId()}/>
           </Col>
         </Row>
       </Grid>
