@@ -1,0 +1,8 @@
+[submodule "backend"]
+	path = backend
+	url = https://github.com/pacificclimate/climate-explorer-backend
+	branch = master
+[submodule "client"]
+	path = client
+	url = https://github.com/pacificclimate/climate-explorer-frontend
+	branch = master
