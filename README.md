@@ -1,77 +1,30 @@
 # PCIC Climate Explorer
 
-[![Build Status](https://travis-ci.org/pacificclimate/climate-explorer.svg?branch=master)](https://travis-ci.org/pacificclimate/climate-explorer)
-[![Code Climate](https://codeclimate.com/github/pacificclimate/climate-explorer/badges/gpa.svg)](https://codeclimate.com/github/pacificclimate/climate-explorer)
+This project links together the various modules required to run the PCIC Climate Explorer
 
-## Requirements
+## Deployment
 
-### Back End
+TODO: document this
 
-libpq-dev python-dev
+## Updating
 
-### Front End
+1. For all submodules run:
 
-npm >= 4.0
+  ```bash
+cd <submodule>
+git checkout master
+git pull
+git checkout `git describe --abbrev=0` # Checks out latest annotated tag
+  ```
 
-## Containerized Development
+`git status` should now show the changed submodule SHA references
 
-Both the back end and front end code can be ran in Docker conatainers. *IN PROGRESS*
+2. Update NEWS.md
+3. Commit these changes tagging the release
 
-## Development
-
-### Back end
-
-#### Config
-
-Database dsn can be configured with the MDDB_DSN environment variable. Defaults to 'postgresql://httpd_meta@monsoon.pcic.uvic.ca/pcic_meta'
-
-Setup using virtualenv:
-
-```bash
-$ virtualenv venv
-$ source venv/bin/activate
-(venv)$ pip install -U pip
-(venv)$ pip install --trusted-host tools.pacificclimate.org -i http://tools.pacificclimate.org/pypiserver/ -e .
-(venv)$ MDDB_DSN=postgresql://dbuser:dbpass@dbhost/dbname python scripts/devserver.py -p <port>
-```
-
-Setup using Docker *IN PROGRESS*:
-
-While this will run a functional container, you must also link in all appropriate data to the correct location defined in the metadata database. Use multiple `-v /data/location:/data/location` options to mount them in the container. If using the test data is sufficient, use `-e "MDDB_DSN=sqlite:////app/ce/tests/data/test.sqlite" when running the container
-
-```bash
-docker build -t climate-explorer-backend backend
-docker run --rm -it -p 8000:8000 -e "MDDB_DSN=postgresql://dbuser:dbpass@dbhost/dbname" -v $(pwd)/backend:/app --name backend climate-explorer-backend
-```
-
-### Front end
-
-Front end code runs on node using webpack. We reccomend using [nvm](https://github.com/creationix/nvm) to manage your node/npm install.
-
-#### Config
-
-Front end configuration uses environment variables.
-
-* CE_BACKEND_URL
-  * Publicly accessible URL for backend climate data
-  * Development default: http://localhost:8000/api
-  * Production default: http://tools.pacificclimate.org/climate-data
-* TILECACHE_URL
-  * Tilecache URL for basemap layers
-  * default: http://tiles.pacificclimate.org/tilecache/tilecache.py
-* NCWMS_URL
-  * ncWMS URL for climate layers
-  * default: http://tools.pacificclimate.org/ncWMS-PCIC/wms
-
-```bash  
-cd client
-npm install
-npm start
-```
-
-Setup using Docker *IN PROGRESS*:
-
-```bash
-docker build -t climate-explorer-frontend client
-docker run --rm -it -e "CE_BACKEND_URL=http://localhost:8000/api" -v $(pwd)/client:/app -p 8080:8080 --name frontend climate-explorer-frontend
-```
+  ```bash
+git add NEWS.md
+git commit -m"Bump to version x.x.x"
+git tag -a -m"x.x.x" x.x.x
+git push --follow-tags
+  ```
