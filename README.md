@@ -4,7 +4,7 @@ This project links together the various modules required to run the PCIC Climate
 
 ## Deployment
 
-TODO: document this
+BACKEND_PORT=<port> FRONTEND_PORT=<port> MDDB_DSN=postgresql://db_user:db_pass@db_host/db_name PUBLIC_URL=<ip/url> docker-compose up
 
 ## Updating
 

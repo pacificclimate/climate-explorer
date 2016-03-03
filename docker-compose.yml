@@ -1,11 +1,18 @@
-backend:
-  build: backend
-  ports:
-   - "8000:8000"
+version: '2'
+services:
+  backend:
+    build: backend
+    name: backend
+    ports:
+     - "${BACKEND_PORT}:8000"
+    environment:
+      - MDDB_DSN
 
-client:
-  build: client
-  ports:
-   - "8080:8080"
-  links:
-   - backend
+  frontend:
+    build: frontend
+    name: frontend
+    ports:
+     - "${FRONTEND_PORT}:8080"
+    environment:
+     - CE_BACKEND_URL="${PUBLIC_URL}:${BACKEND_PORT}/api"
+
