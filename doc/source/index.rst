@@ -17,16 +17,29 @@ Selecting Climate Variables and Emission Scenarios
 --------------------------------------------------
 The use of the PCIC Climate eXplorer web user interface (webUI) is driven primarily by the two drop-down selectors across the top: **Variable Selection** and **Emission Scenario Selection**. **Variable Selection** gives the user the choice of which climate variable will be displayed within the **Map**, **Plot**, and **Summary Table** panes (to be described in the following sections), and **Emission Scenario Selection** specifies the modeled Representative Concentration Pathway (RCP) to be viewed, which may include historical recorded values in addition to future projections. 
 
-.. image:: images/MoTi-TFE_screenshot-Variable_Selection_drop-down .png
+.. image:: images/MoTi-TFE_screenshot-Variable_Selection_drop-down.png
    :scale: 40%
-   :alt: Screenshot showing the Variable Selection drop-down menu.
 
 Using the Map
 -------------
+The **Map** pane at the left of the webUI has two main functions, 1) to allow the user to select an area of analysis, and 2) to display selected climate variable data spatially. The image below indicates the map controls available to the user. 
+
+The "zoom" control will change the displayed map extents, but does not set or affect the area of analysis. 
+
+The two buttons annotated "select map area" allow the user to draw custom polygons or rectangles on the map, which then set the area of analysis (for which the data displayed in the **Plot** and **Summary Table** are generated). 
+
+The buttons annotated "edit analysis area" allow for a polygon/rectangle created by the user to be edited or deleted. 
+
+The "map options" button will open a pop-up dialog box with the following options: *Time Selection*, *Color Pallette*, and *Color scale*.  *Time Selection* allows the user to set the specific time step (the annual midpoint for one year) for which to display colour-scaled annual average data spatially on the map. *Color Pallette* and *Color Scale* allow the user to try different map colour display options for better data visualisation. 
+
+The "export polygon" button allows the user to export a polygon/rectangle currently existing in the map pane (the area of analysis) to a number of common geospatial data formats (Shapefile, GeoJSON, WKT, KML, and GPX), which can be then read by other geospatial software packages. The corallary of this is the "import polygon" button, which allows for polygons created by another geospatial software package to be imported for defining the area of analysis.
+
+.. image:: images/MoTi-TFE_screenshot-Map-annotated.png
+
 
 Using the Plots
 ---------------
-The **Plot** pane is located on the right side of the webUI, and is populated with annual average data, as per the selections in the **Variable Selection** and **Emission Scenario Selection** drop-down selectors. The title at the top of the plot indicates the source model / ensemble of the displayed data as well as the selected variable and emission scenario. Units of measurement are shown beside the vertical axis (e.g. temperature may be in *degrees_C*, or *K* for degrees Kelvin). The horizontal axis gives the time associated with the data points, in units of years. Moving the mouse cursor over the plot area will reveal a tooltip that provides the specific data values and time step for each data point. The colour-coded plot legend is given below the horizontal axis. Clicking on a legend label will toggle the visibility of the particular data series within the plot. 
+The **Plot** pane is located on the right side of the webUI, and is populated with annual average data defined by user input to the **Variable Selection** and **Emission Scenario Selection** drop-down selectors, across the spatial extents of the area selected within the **Map** (if no area was selected, an average for all of Canada is provided). The title at the top of the plot indicates the source model / ensemble of the displayed data as well as the selected variable and emission scenario. Units of measurement are shown beside the vertical axis (e.g. temperature may be in *degrees_C*, or *K* for degrees Kelvin). The horizontal axis gives the time associated with the data points, in units of years. Moving the mouse cursor over the plot area will reveal a tooltip that provides the specific data values and time step for each data point. The colour-coded plot legend is given below the horizontal axis. Clicking on a legend label will toggle the visibility of the particular data series within the plot. 
 
 .. image:: images/MoTi-TFE_screenshot-DataGraph_pane_w_tooltip.png
 
