@@ -1,6 +1,6 @@
 # Climate Explorer Deployment Guide
 
-Deploying the Climate Explorer (CE) requires setting up a number of backing services. This guide assumes familiarity with deploying databases and web applications in a Debian based Linux distribution. Change commands as appropriate for alternate distributions. Additionally, a basic knowledge of version control (Git/Github), the statistical programming language R, NetCDF file format, and some experience working with climate data is recommended.
+Deploying the Climate Explorer (CE) requires setting up a number of backing services. This guide assumes familiarity with deploying databases and web applications in a Debian based Linux distribution. Change commands as appropriate for alternate distributions. Additionally, a basic knowledge of version control (Git/Github), containerization with [docker](https://www.docker.com/), the statistical programming language [R](https://www.r-project.org/), the [NetCDF file format](http://www.unidata.ucar.edu/software/netcdf/), and some experience working with climate data is recommended.
 
 ## Backing Services
 
@@ -10,8 +10,6 @@ The CE requires a number of back end services to supply the user interface with 
 2. ncWMS server
 3. Publicly accessible climate-explorer-backend REST service
 4. Basemap tile server (TileCache)
-
-
 
 ### Data Preparation
 
@@ -35,7 +33,8 @@ cd climate-explorer-backend/data_prep
 git checkout generate-annual-average
 virtualenv venv
 source venv/bin/activate
-pip install numpy # required to do first due to a bug in the netCDF4 python package
+# required to install numpy first due to a bug in the netCDF4 python package
+pip install numpy
 pip install -r requirements.txt
 ```
 
@@ -77,7 +76,11 @@ apt-get install r-base libgdal-dev libproj-dev netcdf-bin
 Then install the required R packages:
 
 ```R
-install.packages(c('ncdf4', 'ncdf4.helpers', 'RPostgreSQL', 'RSQLite', 'PCICt', 'digest', 'rgdal', 'snow'))
+install.packages(c(
+    'ncdf4', 'ncdf4.helpers', 'RPostgreSQL', 'RSQLite', 'PCICt',
+    'digest', 'rgdal', 'snow'
+    )
+)
 ```
 
 Once these are set up, source the indexing script:
@@ -91,8 +94,10 @@ And then in an interactive R session run :
 
 ```R
 source("index_netcdf.r")
-f.list <- list.files("<base_directory_containing_netcdf_files>", full.name=TRUE, pattern = "\\.nc$")
-index.netcdf.files.sqlite(f.list, '<path_to_sqlite_db>')
+f.list <- list.files(base_directory_containing_netcdf_files,
+    full.name=TRUE, pattern = "\\.nc$"
+)
+index.netcdf.files.sqlite(f.list, path_to_sqlite_db)
 ```
 
 To index into a PostgreSQL server, use the `index.netcdf.files` function.
@@ -106,7 +111,8 @@ docker pull pcic/climate-explorer-backend
 docker run -d --restart always \
     -p <public_port>:8000 \
     -e "MDDB_DSN=<dsn_of_sqlite_or_postgresql_instance>" \
-    -v <source_data_location>:<location_in_container> [-v <more_data>:<data_loc_in_container> \
+    -v <source_data_location>:<location_in_container> \
+    [-v <more_data>:<data_loc_in_container>] \
     --name some-climate-explorer-backend \
     pcic/climate-explorer-backend
 ```
