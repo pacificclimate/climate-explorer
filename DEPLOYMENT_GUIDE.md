@@ -1,6 +1,6 @@
 # Climate Explorer Deployment Guide
 
-Deploying the Climate Explorer (CE) requires setting up a number of backing services. This guide assumes familiarity with deploying databases and web applications in a Debian based Linux distribution. Change commands as appropriate for alternate distributions. Additionally, a basic knowledge of version control (Git/Github), the statistical programming language R, NetCDF file format, and some experience working with climate data is reccomended.
+Deploying the Climate Explorer (CE) requires setting up a number of backing services. This guide assumes familiarity with deploying databases and web applications in a Debian based Linux distribution. Change commands as appropriate for alternate distributions. Additionally, a basic knowledge of version control (Git/Github), the statistical programming language R, NetCDF file format, and some experience working with climate data is recommended.
 
 ## Backing Services
 
