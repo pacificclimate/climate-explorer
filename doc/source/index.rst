@@ -80,7 +80,11 @@ Guide to the web API
 
 The PCIC Climate eXplorer has a strict separation between the web user interface (webUI) and the backend. The backend provides all the information that the webUI presents. There are many advantages to this architecture, one being that the user may query the backend directly using the web API and a standard HTTP request.
 
-The web API's URL consists of the following pattern: http://base_url/api/[request_type]?[query_string_parameters] For example a standard multimeta request at our demo site may be found at the URL http://docker1.pcic.uvic.ca:12000/api/metadata? There are presently 6 request types documented in the sections below.
+The web API's URL consists of the following pattern::
+
+  http://base_url/api/[request_type]?[query_string_parameters]
+
+For example a standard multimeta request at our demo site may be found at the URL ``http://docker1.pcic.uvic.ca:12000/api/metadata?`` There are presently 6 request types documented in the sections below.
 
 Each different request accepts a different set of parameters. Request arguments are accepted through the `HTTP query string parameters <https://en.wikipedia.org/wiki/Query_string>`_.
 
