@@ -8,7 +8,29 @@ Welcome to PCIC Climate eXplorer's documentation!
 
 Introduction
 ------------
-[ SOME INTRO NEEDED FIRST ] 
+
+The PCIC Climate eXplorer (PCX or /'pik-æks/) is a web tool for
+exploring and analyzing information about climate change. It
+visualizes and plots a variety of data source from Global Climate
+Models (GCMs), downscaled GCMs, Regional Climate Models (RCMs) and
+gridded observations. It's purpose is to expose to researchers and to
+make available vast archives of climate model output.
+
+The set of features and intended user workflow of the PCX is loosely
+based off of PCIC's `Regional Analysis Tool
+<https://pacificclimate.org/analysis-tools/regional-analysis-tool>`_
+(RAT). Both the RAT and PCX allow users to explore maps, plots and
+summary tables that are constructed from summarized climate model
+output.
+
+PCX has been developed at the Pacific Climate Impacts Consortium
+through the support of a `BC government endowment
+<https://pacificclimate.org/about-pcic/fact-sheet>`_ and with support
+of the `BC Ministry of Transportation and Infrastructure
+<http://www.th.gov.bc.ca/>`_.
+
+Guide to the web front-end
+--------------------------
 
 .. image:: images/MoTi-TFE_screenshot-(sdiiETCCDI).png
    :scale: 40%
